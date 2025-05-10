@@ -5,9 +5,15 @@ const app = express();
 import dotenv from "dotenv";
 import router from "./routes/campusGuideRoutes.js";
 import { client } from "./config/NilePostgresConfig.js";
+import cors from "cors";
 dotenv.config();
 const port = process.env.PORT || 3000;
-
+// allowing cors for all site
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 //middleware to parse json data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
