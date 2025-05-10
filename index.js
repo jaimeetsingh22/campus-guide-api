@@ -12,11 +12,12 @@ const port = process.env.PORT || 3000;
 app.use(
   cors({
     origin: "*",
+    methods: ["GET", "POST", "DELETE"],
   })
 );
 //middleware to parse json data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 client
   .connect()
   .then(() => {

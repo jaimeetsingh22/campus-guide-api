@@ -20,6 +20,8 @@ import { createUser, getUser } from "../controller/user.js";
 const router = express.Router();
 
 router.get("/", Home);
+router.route("/user").get(getUser).post(createUser);
+router.route("/post").get(getPosts).post(addPost);
 router
   .route("/clubfollowers")
   .get(getClubFollowers)
@@ -38,9 +40,5 @@ router
 router.route("/events").get(getEventAllEvents).post(addEvent);
 
 router.route("/like").get(getTotalLikes).post(likeAndDislike);
-
-router.route("/post").get(getPosts).post(addPost);
-
-router.route("/user").get(getUser).post(createUser);
 
 export default router;
